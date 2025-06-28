@@ -1,72 +1,267 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>André Costa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FAEEEA;
-            color: #333;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 400px;
-            margin: 50px auto;
-            background:#F5e2e2;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .profile-img {
-            width: 140px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-        .name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .bio {
-            font-size: 14px;
-            margin-bottom: 20px;
-            color: #666;
-        }
-        .link {
-            display: inline-block;
-            text-decoration: none;
-            background: #FAEEEA;
-            color: #666;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 5px 0;
-            transition: 0.3s;
-            font-size: 16px;
-            text-align: center;
-        }
-        .link:hover {
-            background: #E1a6ad;
-        }
-        .social-icons {
-            margin-bottom: 10px;
-        }
-    </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dicas da Semana</title>
+
+  <!-- Bootstrap 4.6.0 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Bootstrap Select CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.14/css/bootstrap-select.min.css">
+
+  <!-- Flag Icon CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9f6f1;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      padding: 20px 10px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .social-icons {
+      margin-bottom: 10px;
+    }
+    .social-icons a {
+      color: #e4c78a;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #d1b77d;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-safe {
+      background-color: #6ab7a8;
+      color: white;
+    }
+    .btn-safe:hover {
+      background-color: #579e91;
+    }
+    .btn-mistery {
+      background-color: #e4c78a;
+      padding: 4px 10px;
+      color: #222;
+    }
+    .btn-mistery:hover {
+      background-color: #cbb577;
+    }
+    .carousel-inner img {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      margin: auto;
+    }
+    .carousel {
+      max-width: 320px;
+      margin: auto;
+    }
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header {
+      background-color: #f1d393;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+      flex: 1;
+    }
+    .search-container {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .search-container input[type="text"] {
+      padding: 5px 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      outline: none;
+    }
+    .search-container button {
+      padding: 6px 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #f1d393;
+      color: white;
+      border-radius: 0 3px 3px 0;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <img src="Andre_1.jpg" alt="Foto de Perfil" class="profile-img">
-        <div class="name">André Costa</div>
-        <!-- Link com ícone de avião e texto "Voa Aqui!" -->
-        <a href="https://vm.tiktok.com/ZGd5KQWs4/" class="link">
-            <i class="fas fa-plane"></i> Descobre Aqui!
-        </a>
+
+  <header>
+    <h1>André Costa</h1>
+    <div class="search-container">
+      <button id="btnSearch"><i class="fas fa-search"></i></button>
+
+      <select class="selectpicker"
+          id="country-select"
+          data-width="75px"
+          data-style="btn-sm btn-light"
+          data-show-icon="true">
+    <option data-icon="flag-icon flag-icon-us" value="us"></option>
+    <option data-icon="flag-icon flag-icon-pt" value="pt" selected></option>
+    <option data-icon="flag-icon flag-icon-br" value="br"></option>
+    <option data-icon="flag-icon flag-icon-fr" value="fr"></option>
+  </select>
     </div>
+  </header>
+
+
+</div>
+
+  </div>
+
+  <div class="container">
+    <div id="meuCarrossel" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="IMG_0602.JPG" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="IMG_0623.JPG" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="IMG_0652.JPG" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="IMG_0704.JPG" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="IMG_9595.JPG" class="d-block w-100">
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Aquilo que eu tenho falado esta semana!</h4>
+    <p>Vagabas vejam aquilo que eu tenho falado nos storys</p>
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/andrefrcosta/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@andrefrcostaa" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="mailto:andrefilipereiscosta@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.youtube.com/@poddescendodosalto" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+
+    <div class="center-container">
+      <a href="https://lgamifuss.com/W5yVJ" target="_blank" id="btnGalinha" class="btn btn-mistery" style="width: 300px; text-align: center;">
+        <i class="fas fa-drumstick-bite"></i> 
+        <span id="btnGalinhaText">O famoso link da galinha</span>
+      </a>
+    </div>
+
+    <p>Se precisarem de ajuda, enviem-me mensagem!</p>
+  </div>
+
+  <!-- Scripts no fim do body -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.14/js/bootstrap-select.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#country-select').selectpicker();
+    });
+   $(document).ready(function() {
+  $('#country-select').selectpicker();
+
+  $('#country-select').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+    const lang = $(this).val();
+  const texts = {
+  pt: {
+    title: "Dicas da Semana",
+    subtitle: "Aquilo que eu tenho falado esta semana!",
+    paragraph: "Vagabas vejam aquilo que eu tenho falado nos storys",
+    help: "Se precisarem de ajuda, enviem-me mensagem!",
+    btnApply: "Aplicar",
+    btnGalinha: "O famoso link da galinha"
+  },
+  us: {
+    title: "Weekly Tips",
+    subtitle: "What I've been talking about this week!",
+    paragraph: "Guys, check what I've been sharing in stories",
+    help: "If you need help, send me a message!",
+    btnApply: "Apply",
+    btnGalinha: "The famous chicken link"
+  },
+  br: {
+    title: "Dicas da Semana",
+    subtitle: "O que tenho falado essa semana!",
+    paragraph: "Pessoal, vejam o que tenho mostrado nos stories",
+    help: "Se precisarem de ajuda, me mandem uma mensagem!",
+    btnApply: "Aplicar",
+    btnGalinha: "O famoso link da galinha"
+  },
+  fr: {
+    title: "Conseils de la semaine",
+    subtitle: "Ce dont j'ai parlé cette semaine!",
+    paragraph: "Les amis, regardez ce que j'ai partagé dans les stories",
+    help: "Si vous avez besoin d'aide, envoyez-moi un message!",
+    btnApply: "Appliquer",
+    btnGalinha: "Le célèbre lien du poulet"
+  }
+};
+    if (texts[lang]) {
+
+      $('h4').text(texts[lang].subtitle);
+      $('p').first().text(texts[lang].paragraph);
+      $('.container p').last().text(texts[lang].help);
+      $('#btnGalinhaText').text(texts[lang].btnGalinha);
+    }
+  });
+});
+  $(document).ready(function () {
+    $('#btnSearch').on('click', function () {
+      alert("Vai ao ChatGPT e deixa a mamacitia beber a sua margarita! 😅");
+    });
+  });
+  </script>
 </body>
 </html>
